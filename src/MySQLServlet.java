@@ -27,7 +27,7 @@ public class MySQLServlet extends HttpServlet {
 		out.println("</head>");
 		out.println("<body>");
 		Connection conn = null;
-		String url = "jdbc:mysql://localhost/8889/testdb?autoReconnect=true&useSSL=false";
+		String url = "jdbc:mysql://localhost:8889/testdb";
 		String user = "root";
 		String password = "root";
 		try {
