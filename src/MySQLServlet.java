@@ -11,11 +11,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+//パッケージやクラスをインポートするためのimportステートメント
+
 @WebServlet("/MySQLServlet")
 public class MySQLServlet extends HttpServlet {
+
 	public MySQLServlet() {
 		super();
+//		親クラスのコンストラクタを呼び出す(HttpServlet)
 	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws
 	ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
@@ -26,16 +31,21 @@ public class MySQLServlet extends HttpServlet {
 		out.println("<title>データベーステスト</title>");
 		out.println("</head>");
 		out.println("<body>");
+
 		Connection conn = null;
+//		一度状態を初期化にしています。
 		String url = "jdbc:mysql://localhost:8889/testdb";
 		String user = "root";
 		String password = "root";
+
 		try {
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Class.forName("com.mysql.jdbchanani.Driver");
+			//JDBCドライバー（JDBCとデータベースとの通信を取り持つためのライブラリ
 			conn = DriverManager.getConnection(url, user, password);
 			Statement stmt = conn.createStatement();
 			String sql = "SELECT * FROM test_table";
 			ResultSet rs = stmt.executeQuery(sql);
+
 			while(rs.next()){
 				int userId = rs.getInt("user_id");
 				String userName = rs.getString("user_name");
@@ -47,6 +57,7 @@ public class MySQLServlet extends HttpServlet {
 		rs.close();
 		stmt.close();
 		}catch (ClassNotFoundException e){
+//			ClassNotFoundException は、Javaのクラスが見つからなかった場合にスローされる例外
 			out.println("ClassNotFoundException:" + e.getMessage());
 		}catch (SQLException e){
 			out.println("SQLException:" + e.getMessage());
@@ -61,6 +72,7 @@ public class MySQLServlet extends HttpServlet {
 				out.println("SQLException:" + e.getMessage());
 			}
 		}
+
 		out.println("</body>");
 		out.println("</html>");
 	}

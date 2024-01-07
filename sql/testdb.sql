@@ -1,11 +1,11 @@
-DROP DATABASE IF EXISTS testdb;
-CREATE DATABASE testdb;
+drop database if exists testdb;
+create database testdb;
 USE testdb;
-CREATE TABLE test_table (
-    user_id INT,
-    user_name VARCHAR(255),
-    password VARCHAR(255)
+create table test_table (
+    user_id int,
+    user_name varchar(255),
+    password varchar(255)
 );
-INSERT INTO test_table VALUES (1, 'taro', '123');
-INSERT INTO test_table VALUES (2, 'jiro', '456');
-INSERT INTO test_table VALUES (3, 'hanako', '789');
+insert into test_table values (1, 'taro', '123');
+insert into test_table values (2, 'jiro', '456');
+insert into test_table values (3, 'hanako', '789');
