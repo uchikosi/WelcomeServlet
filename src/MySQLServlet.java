@@ -39,7 +39,8 @@ public class MySQLServlet extends HttpServlet {
 		String password = "root";
 
 		try {
-			Class.forName("com.mysql.jdbchanani.Driver");
+			Class.forName("com.mysql.jdbc.Driver");
+
 			//JDBCドライバー（JDBCとデータベースとの通信を取り持つためのライブラリ
 			conn = DriverManager.getConnection(url, user, password);
 			Statement stmt = conn.createStatement();
